@@ -10,6 +10,21 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 
 var app = express();
 
+//Import the mongoose module
+var mongoose = require('mongoose');
+
+//Set up default mongoose connection
+var mongoDB = "mongodb+srv://new-user_02:bobjones@cluster0.fib05.mongodb.net/Cluster0?retryWrites=true&w=majority";
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
