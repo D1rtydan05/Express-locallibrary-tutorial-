@@ -120,7 +120,6 @@ exports.author_detail = function (req, res, next) {
         // Successful, so render.
         res.render('author_detail', { title: 'Author Detail', author: results.author, author_books: results.authors_books });
     });
-
 };
 
 // Display Author create form on GET.
